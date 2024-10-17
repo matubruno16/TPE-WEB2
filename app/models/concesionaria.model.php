@@ -43,6 +43,15 @@ class Concesionaria_model {
         return $marca;
     }
 
+    public function getVehiculo($id_vehiculo) {
+        $query = $this->db->prepare('SELECT * FROM vehiculos WHERE id_vehiculo = ?');
+        $query->execute([$id_vehiculo]);
+
+        $vehiculo = $query->fetch(PDO::FETCH_OBJ);
+
+        return $vehiculo;
+    }
+
     public function addMarca($nombre, $imagen) {
         $query = $this->db->prepare('INSERT INTO marcas (nombre, imagen) VALUES (?,?)');
         $query->execute([$nombre, $imagen]);

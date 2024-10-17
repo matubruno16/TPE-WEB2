@@ -37,6 +37,14 @@ class Concesionaria_controller
         $this->view->showVehiculos($vehiculos, $marcas);
     }
 
+    public function showVehiculo($id_vehiculo) {
+        $vehiculo = $this->model->getVehiculo($id_vehiculo);
+        $marcas = $this->model->getMarcas();
+
+        $this->view->showVehiculo($vehiculo, $marcas);
+        return;
+    }
+
     // public function showVehiculosPorMarca($id_marca) {
     //     $vehiculos = $this->model->getVehiculosPorMarca($id_marca);
     //     $marca = $this->model->getMarca($id_marca);
