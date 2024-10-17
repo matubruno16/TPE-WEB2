@@ -1,24 +1,29 @@
-<?php 
+<?php
 
 require_once './app/models/concesionaria.model.php';
 require_once './app/views/concesionaria.view.php';
-class Concesionaria_controller {
-    private $model; private $view;
+class Concesionaria_controller
+{
+    private $model;
+    private $view;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->model = new Concesionaria_model();
         $this->view = new Concesionaria_view();
     }
 
-    public function showMarcas() {
+    public function showMarcas()
+    {
         $marcas = $this->model->getMarcas();
 
         $this->view->showMarcas($marcas);
     }
 
-    public function showVehiculos($id_marca = '') {
+    public function showVehiculos($id_marca = '')
+    {
         $marcas = $this->model->getMarcas();
-        
+
         if ($id_marca) {
             $marca = $this->model->getMarca($id_marca);
             $vehiculos = $this->model->getVehiculosPorMarca($id_marca);
@@ -39,7 +44,8 @@ class Concesionaria_controller {
     //     $this->view->showVehiculos($vehiculos, $marca);
     // }
 
-    public function addMarca() {
+    public function addMarca()
+    {
         if (!isset($_POST['nombre']) || empty($_POST['nombre'])) {
             header("Location: " . BASE_URL);
             return;
@@ -52,13 +58,14 @@ class Concesionaria_controller {
 
         $nombre = $_POST['nombre'];
         $imagen = $_POST['imagen'];
-        
+
         $this->model->addMarca($nombre, $imagen);
 
         header("Location: " . BASE_URL);
     }
 
-    public function addVehiculo() {
+    public function addVehiculo()
+    {
         if (!isset($_POST['modelo']) || empty($_POST['modelo'])) {
             header("Location: " . BASE_URL);
             return;
@@ -83,29 +90,33 @@ class Concesionaria_controller {
         $marca = $_POST['marca'];
         $descripcion = $_POST['descripcion'];
         $imagen = $_POST['imagen'];
-        
+
         $this->model->addVehiculo($modelo, $marca, $descripcion, $imagen);
 
         header("Location: " . BASE_URL);
     }
 
-    public function deleteMarca($id_marca) {
+    public function deleteMarca($id_marca)
+    {
         $this->model->deleteMarca($id_marca);
 
         header('Location: ' . BASE_URL);
     }
 
-    public function deleteVehiculo($id_vehiculo) {
+    public function deleteVehiculo($id_vehiculo)
+    {
         $this->model->deleteVehiculo($id_vehiculo);
 
         header('Location: ' . BASE_URL);
     }
 
-    public function showUpdateForm($id_marca) {
+    public function showUpdateForm($id_marca)
+    {
         $this->view->showUpdateForm($id_marca);
     }
 
-    public function updateMarca($id_marca) {
+    public function updateMarca($id_marca)
+    {
         if (!isset($_POST['nombre']) || empty($_POST['nombre'])) {
             header("Location: " . BASE_URL);
             return;
@@ -118,8 +129,8 @@ class Concesionaria_controller {
 
         $nombre = $_POST['nombre'];
         $imagen = $_POST['imagen'];
-        
-        $this->model->updateMarca($id_marca ,$nombre, $imagen);
+
+        $this->model->updateMarca($id_marca, $nombre, $imagen);
 
         header("Location: " . BASE_URL);
     }
