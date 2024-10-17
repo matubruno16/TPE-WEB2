@@ -1,0 +1,34 @@
+<form action="addVehiculo" method="POST" class="my-4">
+    <div class="row">
+        <div class="col-9">
+            <div class="form-group">
+                <label>Modelo</label>
+                <input name="modelo" type="text" class="form-control">
+            </div>
+        </div>
+
+        <div class="col-9">
+            <div class="form-group">
+                <label>Marca</label>
+                <select name="marca">
+                    <?php foreach ($marcas as $marca): ?>
+                        <option value="<?=$marca->id_marca?>"><?=$marca->nombre?></option>
+                    <?php endforeach ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-9">
+            <div class="form-group">
+                <label>Descripcion</label>
+                <textarea name="descripcion"></textarea>
+            </div>
+        </div>
+        
+    <div class="form-group">
+        <label>Imagen (URL)</label>
+        <input name="imagen" class="form-control" rows="3">
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+</form>

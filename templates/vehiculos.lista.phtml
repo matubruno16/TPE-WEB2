@@ -1,0 +1,19 @@
+<?php require_once 'layout/header.phtml'; ?>
+
+
+<?php require_once 'vehiculos.form.phtml'; ?>
+
+    <?php foreach ($vehiculos as $vehiculo): ?>
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> <?= $vehiculo->modelo ?> </h5>
+                <a href="deleteVehiculo/<?=$vehiculo->id_vehiculo?>" class="btn btn-danger">Borrar</a>
+                <a href="updateFormVehiculo/<?=$vehiculo->id_vehiculo?>" class="btn btn-success">Editar</a>
+            </div>
+        </div>
+    <?php endforeach ?>
+
+
+<?php require_once 'layout/footer.phtml'; ?>
+

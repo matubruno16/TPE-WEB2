@@ -1,0 +1,17 @@
+<?php require_once 'layout/header.phtml'; ?>
+
+<?php require_once 'marcas.form.phtml'; ?>
+
+    <?php foreach ($marcas as $marca): ?>
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="showVehiculosPorMarca/<?=$marca->id_marca?>" class="card-title"> <?= $marca->nombre ?> </a>
+                <a href="deleteMarca/<?=$marca->id_marca?>" class="btn btn-danger">Borrar</a>
+                <a href="updateFormMarca/<?=$marca->id_marca?>" class="btn btn-success">Editar</a>
+            </div>
+        </div>
+    <?php endforeach ?>
+
+
+<?php require_once 'layout/footer.phtml'; ?>
