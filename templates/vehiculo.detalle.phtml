@@ -1,0 +1,21 @@
+<div>
+  <h1><?= $vehiculo->modelo ?></h1>
+  <p>Descripción: <?= $vehiculo->descripcion ?></p>
+
+  <?php
+  $nombreMarca = "Marca desconocida";
+
+  foreach ($marcas as $marca) {
+    if ($marca->id_marca == $vehiculo->marca) {
+      $nombreMarca = $marca->nombre;
+      break;
+    }
+  }
+  ?>
+  
+  <p>Marca: <?= $nombreMarca ?></p>
+  <p>Imagen: <img src="<?= $vehiculo->imagen ?>" alt=""></p>
+
+  <!-- Botón para volver al listado de vehículos -->
+  <a href="<?= BASE_URL ?>showVehiculos">Volver al listado de vehículos</a>
+</div>
