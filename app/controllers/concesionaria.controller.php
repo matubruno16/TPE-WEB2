@@ -93,7 +93,7 @@ class Concesionaria_controller
 
         $this->model->addVehiculo($modelo, $marca, $descripcion, $imagen);
 
-        header("Location: " . BASE_URL);
+        header("Location: " . BASE_URL . 'showVehiculos');
     }
 
     public function deleteMarca($id_marca)
@@ -107,7 +107,7 @@ class Concesionaria_controller
     {
         $this->model->deleteVehiculo($id_vehiculo);
 
-        header('Location: ' . BASE_URL);
+        header("Location: " . BASE_URL . 'showVehiculos');
     }
 
     public function showUpdateForm($id_marca)
