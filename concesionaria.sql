@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-09-2024 a las 20:52:00
+-- Tiempo de generación: 18-10-2024 a las 00:36:21
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -24,23 +24,46 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `comprador`
+-- Estructura de tabla para la tabla `marcas`
 --
 
-CREATE TABLE `comprador` (
-  `id_comprador` int(11) NOT NULL,
-  `nombre` varchar(60) NOT NULL,
-  `apellido` varchar(60) NOT NULL,
-  `fecha_nacimiento` date NOT NULL
+CREATE TABLE `marcas` (
+  `id_marca` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `imagen` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `comprador`
+-- Volcado de datos para la tabla `marcas`
 --
 
-INSERT INTO `comprador` (`id_comprador`, `nombre`, `apellido`, `fecha_nacimiento`) VALUES
-(1, 'Matias ', 'Bruno', '2024-09-10'),
-(2, 'Martiniano', 'Gutierrez', '2024-09-13');
+INSERT INTO `marcas` (`id_marca`, `nombre`, `imagen`) VALUES
+(1, 'Ford', ''),
+(2, 'Fiat', ''),
+(4, 'Peugeot', 'gtefdsfgrsdsaer');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `nombre_usuario` varchar(150) NOT NULL,
+  `contraseña` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `nombre`, `nombre_usuario`, `contraseña`) VALUES
+(1, 'Matias', 'matias@gmail.com', '$2y$10$7eBjz3TM3rzE.khsQ06jR.2Ni.h4IffFLRnIuxHWWCzTfK0Chnlzq'),
+(2, 'Martiniano', 'martu@gmail.com', '$2y$10$zPJYcNBHjv6DupbdA5vGZuBJuNsB1oc3iv7Z6OQZf5zcELimY2y/O'),
+(3, 'Teo', 'teo@gmail.com', '$2y$10$tmZsfjEcPpoXGPeWZRKvzuL4CuWJwkW73hX1Oi9uCqzUwYSYJKmIS'),
+(4, 'Aprobame (porfavor)', 'webadmin', '$2y$10$Eld/iGLil0x4AGYCnBIE3udrOBBGOMqy.CIY8xP8Q/nFTU1fFHqEC');
 
 -- --------------------------------------------------------
 
@@ -50,131 +73,78 @@ INSERT INTO `comprador` (`id_comprador`, `nombre`, `apellido`, `fecha_nacimiento
 
 CREATE TABLE `vehiculos` (
   `id_vehiculo` int(11) NOT NULL,
-  `modelo` varchar(60) NOT NULL,
-  `marca` varchar(60) NOT NULL,
-  `tipo` varchar(60) NOT NULL
+  `modelo` varchar(150) NOT NULL,
+  `marca` int(11) NOT NULL,
+  `descripcion` text NOT NULL,
+  `imagen` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `vehiculos`
 --
 
-INSERT INTO `vehiculos` (`id_vehiculo`, `modelo`, `marca`, `tipo`) VALUES
-(1, 'Ranger ', 'Ford', 'Camioneta'),
-(2, 'Corola', 'Toyota', 'Auto');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `vendedor`
---
-
-CREATE TABLE `vendedor` (
-  `id_vendedor` int(11) NOT NULL,
-  `nombre` varchar(60) NOT NULL,
-  `apellido` varchar(60) NOT NULL,
-  `fecha_nacimiento` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `vendedor`
---
-
-INSERT INTO `vendedor` (`id_vendedor`, `nombre`, `apellido`, `fecha_nacimiento`) VALUES
-(1, 'Fabian', 'Espindola', '2024-09-12'),
-(2, 'Pablo', 'Gomez', '2024-09-11');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `venta`
---
-
-CREATE TABLE `venta` (
-  `id_viaje` int(11) NOT NULL,
-  `id_vendedor` int(11) NOT NULL,
-  `id_comprador` int(11) NOT NULL,
-  `id_vehiculo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `venta`
---
-
-INSERT INTO `venta` (`id_viaje`, `id_vendedor`, `id_comprador`, `id_vehiculo`) VALUES
-(1, 1, 1, 2),
-(2, 2, 2, 1);
+INSERT INTO `vehiculos` (`id_vehiculo`, `modelo`, `marca`, `descripcion`, `imagen`) VALUES
+(1, 'Ford ka', 1, 'Chiquito', ''),
+(2, 'Cronos', 2, 'Cronos', ''),
+(5, 'Alguno', 2, 'weadfd', 'aIUFKVBAFD'),
+(6, '206', 4, 'Una maravilla', 'bjieasoufejwa'),
+(7, '205', 4, 'Maquinon', 'vraljf');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `comprador`
+-- Indices de la tabla `marcas`
 --
-ALTER TABLE `comprador`
-  ADD PRIMARY KEY (`id_comprador`);
+ALTER TABLE `marcas`
+  ADD PRIMARY KEY (`id_marca`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `email` (`nombre_usuario`);
 
 --
 -- Indices de la tabla `vehiculos`
 --
 ALTER TABLE `vehiculos`
-  ADD PRIMARY KEY (`id_vehiculo`);
-
---
--- Indices de la tabla `vendedor`
---
-ALTER TABLE `vendedor`
-  ADD PRIMARY KEY (`id_vendedor`);
-
---
--- Indices de la tabla `venta`
---
-ALTER TABLE `venta`
-  ADD PRIMARY KEY (`id_viaje`),
-  ADD UNIQUE KEY `id_vendedor` (`id_vendedor`),
-  ADD UNIQUE KEY `id_comprador` (`id_comprador`),
-  ADD UNIQUE KEY `id_vehiculo` (`id_vehiculo`);
+  ADD PRIMARY KEY (`id_vehiculo`),
+  ADD KEY `marca` (`marca`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `comprador`
+-- AUTO_INCREMENT de la tabla `marcas`
 --
-ALTER TABLE `comprador`
-  MODIFY `id_comprador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `marcas`
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `vehiculos`
 --
 ALTER TABLE `vehiculos`
-  MODIFY `id_vehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `vendedor`
---
-ALTER TABLE `vendedor`
-  MODIFY `id_vendedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `venta`
---
-ALTER TABLE `venta`
-  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_vehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `venta`
+-- Filtros para la tabla `vehiculos`
 --
-ALTER TABLE `venta`
-  ADD CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`id_vehiculo`) REFERENCES `vehiculos` (`id_vehiculo`),
-  ADD CONSTRAINT `venta_ibfk_2` FOREIGN KEY (`id_comprador`) REFERENCES `comprador` (`id_comprador`),
-  ADD CONSTRAINT `venta_ibfk_3` FOREIGN KEY (`id_vendedor`) REFERENCES `vendedor` (`id_vendedor`);
+ALTER TABLE `vehiculos`
+  ADD CONSTRAINT `vehiculos_ibfk_1` FOREIGN KEY (`marca`) REFERENCES `marcas` (`id_marca`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
