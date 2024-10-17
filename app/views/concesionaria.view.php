@@ -1,7 +1,11 @@
 <?php
 
 class Concesionaria_view {
-    
+    private $user = null;
+
+    public function __construct($user = '') {
+        $this->user = $user;
+    }
 
     public function showMarcas($marcas, $error = '') {
         require_once 'templates/marcas.lista.phtml';
