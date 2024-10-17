@@ -25,6 +25,10 @@ switch ($params[0]) {
         $controller = new Concesionaria_controller();
         $controller->showVehiculos($params[1]);
         break;
+    case 'showVehiculo' :
+        $controller = new Concesionaria_controller();
+        $controller->showVehiculo($params[1]);
+        break;
     case 'addMarca':
         $controller = new Concesionaria_controller();
         $controller->addMarca();
