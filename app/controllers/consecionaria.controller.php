@@ -1,13 +1,13 @@
 <?php 
 
-require_once './app/models/consecionaria.model.php';
-require_once './app/views/consecionaria.view.php';
-class Consecionaria_controller {
+require_once './app/models/concesionaria.model.php';
+require_once './app/views/concesionaria.view.php';
+class Concesionaria_controller {
     private $model; private $view;
 
     public function __construct() {
-        $this->model = new Consecionaria_model();
-        $this->view = new Consecionaria_view();
+        $this->model = new Concesionaria_model();
+        $this->view = new Concesionaria_view();
     }
 
     public function showMarcas() {

@@ -1,6 +1,6 @@
 <?php
 
-class Consecionaria_view {
+class Concesionaria_view {
     
 
     public function showMarcas($marcas, $error = '') {

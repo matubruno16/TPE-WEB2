@@ -1,10 +1,10 @@
 <?php
 
-class Consecionaria_model {
+class Concesionaria_model {
     private $db;
 
     public function __construct() {
-        $this->db = new PDO('mysql:host=localhost;'.'dbname=consecionaria;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=localhost;'.'dbname=concesionaria;charset=utf8', 'root', '');
     }
 
     public function getMarcas() {
