@@ -2,16 +2,19 @@
 
 <?php require_once 'vehiculos.form.phtml'; ?>
 
-<div class="container mx-auto d-flex flex-row flex-wrap">
+<div class="container mx-auto d-flex flex-row flex-wrap justify-content-center ">
     <?php foreach ($vehiculos as $vehiculo): ?>
-        <div class="card m-5" style="width: 18rem; height: 20rem;">
-            <img src="..." class="card-img-top" alt="...">
+        <div class="card m-3 w-25 shadow">
+            <?php if ($vehiculo->imagen): ?>
+                <img src="<?= BASE_URL . $vehiculo->imagen ?>" class="card-img-top" alt="Imagen de 
+                <?= $vehiculo->modelo ?>">
+            <?php endif; ?>
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title"> <?= $vehiculo->modelo ?> </h5>
                 <div class="d-flex justify-content-between mt-auto">
-                    <a href="deleteVehiculo/<?=$vehiculo->id_vehiculo?>" class="btn btn-danger">Borrar</a>
-                    <a href="updateFormVehiculo/<?=$vehiculo->id_vehiculo?>" class="btn btn-success">Editar</a>
-                    <a href="showVehiculo/<?=$vehiculo->id_vehiculo?>" class="btn btn-primary">Ver más</a>
+                    <a href="deleteVehiculo/<?= $vehiculo->id_vehiculo ?>" class="btn btn-danger">Borrar</a>
+                    <a href="updateFormVehiculo/<?= $vehiculo->id_vehiculo ?>" class="btn btn-success">Editar</a>
+                    <a href="showVehiculo/<?= $vehiculo->id_vehiculo ?>" class="btn btn-primary">Ver más</a>
                 </div>
             </div>
         </div>
