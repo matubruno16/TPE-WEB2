@@ -1,21 +1,48 @@
-<div>
-  <h1><?= $vehiculo->modelo ?></h1>
-  <p>Descripción: <?= $vehiculo->descripcion ?></p>
+<?php require_once 'layout/header.phtml'; ?>
+<section class="container mt-5 text-center">
+  <h1 class="display-4"><?=$vehiculo->modelo?></h1>
 
-  <?php
-  $nombreMarca = "Marca desconocida";
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+      <?php if ($vehiculo->imagen): ?>
+        <img src="<?= BASE_URL . $vehiculo->imagen ?>"  alt="Imagen de <?= $vehiculo->modelo ?>"
+          class="img-fluid rounded shadow">
+      <?php else: ?>
+        <img src="<?= BASE_URL ?>img/vehiculos/default.png" alt="Imagen no disponible" class="img-fluid rounded shadow">
+      <?php endif; ?>
+    </div>
+  </div>
 
-  foreach ($marcas as $marca) {
-    if ($marca->id_marca == $vehiculo->marca) {
-      $nombreMarca = $marca->nombre;
-      break;
-    }
-  }
-  ?>
-  
-  <p>Marca: <?= $nombreMarca ?></p>
-  <p>Imagen: <img src="<?= $vehiculo->imagen ?>" alt=""></p>
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Descripción del Vehículo</h5>
+          <p class="card-text"><?= $vehiculo->descripcion ?></p>
+        </div>
+      </div>
 
-  <!-- Botón para volver al listado de vehículos -->
-  <a href="<?= BASE_URL ?>showVehiculos">Volver al listado de vehículos</a>
-</div>
+      <div class="card">
+        <div class="card-body ">
+          <?php
+          $nombreMarca = "Marca desconocida";
+          foreach ($marcas as $marca) {
+            if ($marca->id_marca == $vehiculo->marca) {
+              $nombreMarca = $marca->nombre;
+              break;
+            }
+          }
+          ?>
+          <h5 class="card-title">Marca</h5>
+          <p class="card-text"><?= $nombreMarca ?></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <a href="<?= BASE_URL ?>showVehiculos" class="btn btn-primary btn-lg">Volver al listado de vehículos</a>
+  </div>
+</section>
+
+<?php require_once 'layout/footer.phtml'; ?>
