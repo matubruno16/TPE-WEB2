@@ -8,7 +8,7 @@
         <img src="<?= BASE_URL . $vehiculo->imagen ?>"  alt="Imagen de <?= $vehiculo->modelo ?>"
           class="img-fluid rounded shadow">
       <?php else: ?>
-        <img src="<?= BASE_URL ?>img/vehiculos/default.png" alt="Imagen no disponible" class="img-fluid rounded shadow">
+        <img src="img/vehiculos/default.png" alt="Imagen no disponible" class="img-fluid rounded shadow">
       <?php endif; ?>
     </div>
   </div>
@@ -34,14 +34,14 @@
           }
           ?>
           <h5 class="card-title">Marca</h5>
-          <a href="<?= BASE_URL ?>showVehiculosPorMarca/<?= $vehiculo->marca ?>" class="card-subtitle text-decoration-none mb-2"><h5 class="card-subtitle"><?= $nombreMarca ?></h5></a>
+          <a href="showVehiculosPorMarca/<?= $vehiculo->marca ?>" class="card-subtitle text-decoration-none mb-2"><h5 class="card-subtitle"><?= $nombreMarca ?></h5></a>
         </div>
       </div>
     </div>
   </div>
 
   <div class="mt-5">
-    <a href="<?= BASE_URL ?>showVehiculos" class="btn btn-primary btn-lg">Volver al listado de vehículos</a>
+    <a href="showVehiculos" class="btn btn-primary btn-lg">Volver al listado de vehículos</a>
   </div>
 </section>
 

@@ -28,13 +28,13 @@ class Concesionaria_controller
             $marca = $this->model->getMarca($id_marca);
             $vehiculos = $this->model->getVehiculosPorMarca($id_marca);
 
-            $this->view->showVehiculos($vehiculos, $marcas, $marca);
+            $this->view->showVehiculos($vehiculos, $marca, $marcas= null);
             return;
         }
 
         $vehiculos = $this->model->getVehiculos();
 
-        $this->view->showVehiculos($vehiculos, $marcas);
+        $this->view->showVehiculos($vehiculos, $marca = null, $marcas);
     }
 
     public function showVehiculo($id_vehiculo) {
@@ -45,12 +45,12 @@ class Concesionaria_controller
         return;
     }
 
-    // public function showVehiculosPorMarca($id_marca) {
-    //     $vehiculos = $this->model->getVehiculosPorMarca($id_marca);
-    //     $marca = $this->model->getMarca($id_marca);
+    public function showVehiculosPorMarca($id_marca) {
+        $vehiculos = $this->model->getVehiculosPorMarca($id_marca);
+        $marca = $this->model->getMarca($id_marca);
 
-    //     $this->view->showVehiculos($vehiculos, $marca);
-    // }
+        $this->view->showVehiculos($vehiculos, $marca);
+    }
 
     public function addMarca()
     {
@@ -151,18 +151,30 @@ class Concesionaria_controller
             header("Location: " . BASE_URL);
             return;
         }
+        
+        $nombre = $_POST['nombre'];
+        $rutaImagenFinal = 'img/vehiculos/default.png';   
 
-        if (!isset($_POST['imagen']) || empty($_POST['imagen'])) {
-            header("Location: " . BASE_URL);
-            return;
+        if (
+            isset($_FILES['imagen']) && $_FILES['imagen']['error'] === 0 &&
+            ($_FILES['imagen']['type'] == "image/jpg" ||
+                $_FILES['imagen']['type'] == "image/jpeg" ||
+                $_FILES['imagen']['type'] == "image/png")
+        ) {
+            $rutaImagenTemporal = $_FILES['imagen']['tmp_name'];
+            $extensionImagen = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+            $nombreImagen = uniqid() . "." . $extensionImagen;
+            $rutaImagenFinal = 'img/vehiculos/' . $nombreImagen;
+    
+            if (!move_uploaded_file($rutaImagenTemporal, $rutaImagenFinal)) {
+                $rutaImagenFinal = 'img/vehiculos/default.png';
+            }
         }
 
-        $nombre = $_POST['nombre'];
-        $imagen = $_POST['imagen'];
-
-        $this->model->updateMarca($id_marca, $nombre, $imagen);
+        $this->model->updateMarca($id_marca, $nombre, $rutaImagenFinal);
 
         header("Location: " . BASE_URL);
+        
     }
 
 

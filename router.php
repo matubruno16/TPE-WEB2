@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once 'app/controllers/concesionaria.controller.php';
 require_once 'app/controllers/auth.controller.php';
@@ -6,8 +6,8 @@ require_once 'middlewares/read.session.auth.php';
 require_once 'middlewares/verify.session.auth.php';
 require_once 'list/response.php';
 
-define('BASE_URL','//'.$_SERVER['SERVER_NAME'].':'
-.$_SERVER['SERVER_PORT'].dirname($_SERVER['PHP_SELF']).'/');
+define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':'
+    . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
 $action = 'home';
 if (!empty($_GET['action'])) {
@@ -34,7 +34,7 @@ switch ($params[0]) {
         $controller = new Concesionaria_controller();
         $controller->showVehiculos($params[1]);
         break;
-    case 'showVehiculo' :
+    case 'showVehiculo':
         readSession($res);
         $controller = new Concesionaria_controller();
         $controller->showVehiculo($params[1]);
@@ -57,10 +57,10 @@ switch ($params[0]) {
         $controller = new Concesionaria_controller();
         $controller->showUpdateForm($params[1]);
         break;
-    // case 'updateMarca':
-    //     $controller = new Concesionaria_controller();
-    //     $controller->updateMarca($params[1]);
-    //     break;
+    case 'updateMarca':
+        $controller = new Concesionaria_controller();
+        $controller->updateMarca($params[1]);
+        break;
     case 'addVehiculo':
         readSession($res);
         verifySession($res);
@@ -74,8 +74,8 @@ switch ($params[0]) {
         $controller->deleteVehiculo($params[1]);
         break;
     // case 'updateVehiculo':
-        // readSession($res);
-        // verifySession($res);
+    //     readSession($res);
+    //     verifySession($res);
     //     $controller = new Concesionaria_controller();
     //     $controller->updateVehiculo($params[1]);
     //     break;

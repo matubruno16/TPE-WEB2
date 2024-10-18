@@ -15,9 +15,13 @@ class Concesionaria_view {
         require_once 'templates/marcas.update.form.phtml';
     }
 
-    public function showVehiculos($vehiculos, $marcas, $marca = '') {
+    public function showVehiculos($vehiculos,  $marca ='', $marcas = '') {
         require_once 'templates/vehiculos.lista.phtml';
     }
+
+    // public function showVehiculosPorMarca($vehiculos,  $marca ='', $marcas = '') {
+    //     require_once 'templates/vehiculos.lista.phtml';
+    // }
 
     public function showVehiculo($vehiculo, $marcas) {
         require_once 'templates/vehiculo.detalle.phtml';

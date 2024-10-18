@@ -78,7 +78,7 @@ class Concesionaria_model {
     }
 
     public function updateMarca($id_marca, $nombre, $imagen) {
-        $query = $this->db->prepare('UPDATE marcas SET nombre = ?, imagen = ? WHERE marcas.id_marca = ?');
+        $query = $this->db->prepare('UPDATE marcas SET nombre = ?, imagen = ? WHERE id_marca = ?');
         $query->execute([$nombre, $imagen, $id_marca]);
     }
 
