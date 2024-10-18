@@ -1,10 +1,14 @@
 <?php
-
+require_once 'config.php';
 class Concesionaria_model {
     private $db;
 
     public function __construct() {
-        $this->db = new PDO('mysql:host=localhost;'.'dbname=concesionaria;charset=utf8', 'root', '');
+        $this->db = new PDO(
+            "mysql:host=".MYSQL_HOST.";dbname=".MYSQL_DB.";charset=utf8", 
+            MYSQL_USER, 
+            MYSQL_PASS
+        );
     }
 
     public function getMarcas() {
@@ -59,11 +63,10 @@ class Concesionaria_model {
     }
 
     public function addVehiculo($modelo, $marca, $descripcion, $imagen) {
-        $query = $this->db->prepare('INSERT INTO vehiculos (modelo, marca, descripcion, imagen) VALUES (?,?,?,?)');
+        $query = $this->db->prepare('INSERT INTO vehiculos (modelo, marca, descripcion, imagen) VALUES (?, ?, ?, ?)');
         $query->execute([$modelo, $marca, $descripcion, $imagen]);
-        
     }
-
+    
     public function deleteMarca($id_marca) {
         $query = $this->db->prepare('DELETE FROM marcas WHERE id_marca = ?');
         $query->execute([$id_marca]);
