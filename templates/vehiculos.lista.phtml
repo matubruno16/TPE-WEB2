@@ -10,7 +10,10 @@
                 <?= $vehiculo->modelo ?>">
             <?php endif; ?>
             <div class="card-body d-flex flex-column ">
-                <h2 class="card-title"> <?= $vehiculo->modelo ?> </h2>
+                <a href="<?= BASE_URL ?>showVehiculo/<?= $vehiculo->id_vehiculo ?>" class="card-title fw-bold text-decoration-none">
+                    <h2 class="card-title"> <?= $vehiculo->modelo ?> </h2>
+                </a>
+              
                 <?php
                 $nombreMarca = "Marca desconocida";
                 foreach ($marcas as $marca) {
