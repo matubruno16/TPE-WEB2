@@ -1,7 +1,7 @@
 <div class="container mx-auto">
     <h1>Agregar marca</h1>
 
-    <form action="addMarca" method="POST" class="my-4">
+    <form action="addMarca" method="POST" enctype="multipart/form-data" class="my-4">
         <div class="row m-4">
             <div class="col-12">
                 <div class="form-group">
@@ -14,7 +14,8 @@
             <div class="col-12">
                 <div class="form-group">
                     <label>Imagen (URL)</label>
-                    <input name="imagen" class="form-control" rows="3">
+                    <label>Imagen (URL)</label>
+                    <input name="imagen" type="file" class="form-control" id="imagen" accept="image/*">
                 </div>
             </div>
         </div>
