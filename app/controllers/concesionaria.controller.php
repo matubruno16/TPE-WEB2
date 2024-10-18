@@ -59,50 +59,72 @@ class Concesionaria_controller
             return;
         }
 
-        if (!isset($_POST['imagen']) || empty($_POST['imagen'])) {
-            header("Location: " . BASE_URL);
-            return;
+        $nombre = $_POST['nombre'];
+        $rutaImagenFinal = 'img/vehiculos/default.png';   
+
+        if (
+            isset($_FILES['imagen']) && $_FILES['imagen']['error'] === 0 &&
+            ($_FILES['imagen']['type'] == "image/jpg" ||
+                $_FILES['imagen']['type'] == "image/jpeg" ||
+                $_FILES['imagen']['type'] == "image/png")
+        ) {
+            $rutaImagenTemporal = $_FILES['imagen']['tmp_name'];
+            $extensionImagen = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+            $nombreImagen = uniqid() . "." . $extensionImagen;
+            $rutaImagenFinal = 'img/vehiculos/' . $nombreImagen;
+    
+            if (!move_uploaded_file($rutaImagenTemporal, $rutaImagenFinal)) {
+                $rutaImagenFinal = 'img/vehiculos/default.png';
+            }
         }
 
-        $nombre = $_POST['nombre'];
-        $imagen = $_POST['imagen'];
-
-        $this->model->addMarca($nombre, $imagen);
+        $this->model->addMarca($nombre, $rutaImagenFinal);
 
         header("Location: " . BASE_URL);
     }
 
     public function addVehiculo()
     {
-        if (!isset($_POST['modelo']) || empty($_POST['modelo'])) {
+
+        if (
+            !isset($_POST['modelo']) || empty($_POST['modelo']) ||
+            !isset($_POST['marca']) || empty($_POST['marca']) ||
+            !isset($_POST['descripcion']) || empty($_POST['descripcion'])
+        ) {
             header("Location: " . BASE_URL);
             return;
         }
 
-        if (!isset($_POST['marca']) || empty($_POST['marca'])) {
-            header("Location: " . BASE_URL);
-            return;
+        $modeloVehiculo = $_POST['modelo'];
+        $marcaVehiculo = $_POST['marca'];
+        $descripcionVehiculo = $_POST['descripcion'];
+
+        $rutaImagenFinal = 'img/vehiculos/default.png';
+
+        if (
+            isset($_FILES['imagen']) && $_FILES['imagen']['error'] === 0 &&
+            ($_FILES['imagen']['type'] == "image/jpg" ||
+                $_FILES['imagen']['type'] == "image/jpeg" ||
+                $_FILES['imagen']['type'] == "image/png")
+        ) {
+
+            $rutaImagenTemporal = $_FILES['imagen']['tmp_name'];
+            $extensionImagen = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+            $nombreImagen = uniqid() . "." . $extensionImagen;
+            $rutaImagenFinal = 'img/vehiculos/' . $nombreImagen;
+
+
+            if (!move_uploaded_file($rutaImagenTemporal, $rutaImagenFinal)) {
+                $rutaImagenFinal = 'img/vehiculos/default.png';
+            }
         }
 
-        if (!isset($_POST['descripcion']) || empty($_POST['descripcion'])) {
-            header("Location: " . BASE_URL);
-            return;
-        }
-
-        if (!isset($_POST['imagen']) || empty($_POST['imagen'])) {
-            header("Location: " . BASE_URL);
-            return;
-        }
-
-        $modelo = $_POST['modelo'];
-        $marca = $_POST['marca'];
-        $descripcion = $_POST['descripcion'];
-        $imagen = $_POST['imagen'];
-
-        $this->model->addVehiculo($modelo, $marca, $descripcion, $imagen);
+        $this->model->addVehiculo($modeloVehiculo, $marcaVehiculo, $descripcionVehiculo, $rutaImagenFinal);
 
         header("Location: " . BASE_URL . 'showVehiculos');
     }
+
+
 
     public function deleteMarca($id_marca)
     {
