@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-10-2024 a las 19:29:53
+-- Tiempo de generación: 18-10-2024 a las 21:06:45
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -38,10 +38,10 @@ CREATE TABLE `marcas` (
 --
 
 INSERT INTO `marcas` (`id_marca`, `nombre`, `imagen`) VALUES
-(1, 'Ford', ''),
-(2, 'Fiat', ''),
-(4, 'Peugeot', 'gtefdsfgrsdsaer'),
-(7, 'Volkswagen ', 'ssssssssssssssss');
+(8, 'Mercedes Benz', 'img/vehiculos/6712a39d90a24.jpg'),
+(9, 'Volkswagen ', 'img/vehiculos/6712a3a687cf4.jpg'),
+(10, 'Ford', 'img/vehiculos/6712a3f5242e5.jpg'),
+(11, 'Fiat', 'img/vehiculos/6712a3fe90a65.jpg');
 
 -- --------------------------------------------------------
 
@@ -85,11 +85,11 @@ CREATE TABLE `vehiculos` (
 --
 
 INSERT INTO `vehiculos` (`id_vehiculo`, `modelo`, `marca`, `descripcion`, `imagen`) VALUES
-(16, 'Ranger', 1, 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzz', 'img/vehiculos/67126a5c8503d.jpg'),
-(17, 'Ka', 1, 'Es un auto chiquito de color negro', 'img/vehiculos/67126a8369aba.jpg'),
-(18, 'Saveiro', 7, 'Camionetita ', 'img/vehiculos/67126b8bd978b.jpg'),
-(19, '206', 1, 'Este es un auto de peugeot', 'img/vehiculos/67126bcb10575.jpg'),
-(21, 'Cronos', 2, 'El auto mas vendido de 2023', 'img/vehiculos/6712712bb8682.jpg');
+(26, 'Ranger', 10, 'Es una camioneta 4x4', 'img/vehiculos/6712a4968a9b4.jpg'),
+(27, 'Saveiro', 9, 'Es una camioneta chiquita pero muy fachera', 'img/vehiculos/6712a4af3b747.jpg'),
+(28, 'Cronos', 11, 'Es el auto mas vendido en 2023', 'img/vehiculos/6712a4bf610ee.jpg'),
+(29, 'Ka', 10, 'Es un auto chico para cuidad', 'img/vehiculos/6712a4d493032.jpg'),
+(30, 'Clase A', 8, 'Es una locura de auto', 'img/vehiculos/6712a51dca76f.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -123,7 +123,7 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -135,7 +135,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `vehiculos`
 --
 ALTER TABLE `vehiculos`
-  MODIFY `id_vehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_vehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Restricciones para tablas volcadas
