@@ -1,0 +1,14 @@
+<?php
+  require_once 'layout/header.phtml';
+?>
+
+<div>
+  <h1>¿Seguro que quieres borrar esta marca?</h1>
+  <h3>Esta accion no se puede deshacer</h3>
+  <a href="deleteMarca/<?= $id_marca; ?>">Borrar</a>
+  <a href="home">Cancelar</a>
+</div>
+
+<?php
+  require_once 'layout/footer.phtml';
+?>

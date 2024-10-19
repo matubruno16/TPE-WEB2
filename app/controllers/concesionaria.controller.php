@@ -36,7 +36,7 @@ class Concesionaria_controller
                 }
             }
         }
-        $this->view->showVehiculos($vehiculos);
+        $this->view->showVehiculos($vehiculos, $marcas);
     }
 
 
@@ -127,10 +127,12 @@ class Concesionaria_controller
         header("Location: " . BASE_URL . 'showVehiculos');
     }
 
-
-
-    public function deleteMarca($id_marca)
-    {
+    public function confirmacionDeleteMarca($id_marca){
+        $this->view->confirmacionDeleteMarca($id_marca);
+    }
+    
+    public function deleteMarca($id_marca)    {
+        
         $this->model->deleteMarca($id_marca);
 
         header('Location: ' . BASE_URL);
@@ -143,13 +145,18 @@ class Concesionaria_controller
         header("Location: " . BASE_URL . 'showVehiculos');
     }
 
-    public function showUpdateForm($id_marca)
+    public function showUpdateFormMarca($id_marca)
     {
-        $this->view->showUpdateForm($id_marca);
+        $this->view->showUpdateFormMarca($id_marca);
+    }
+    public function showUpdateFormVehiculo($id_vehiculo)
+    {
+        $vehiculo = $this->model->getVehiculo($id_vehiculo);
+        $marcas = $this->model->getMarcas();  
+        $this->view->showUpdateFormVehiculo($vehiculo, $marcas);
     }
 
-    public function updateMarca($id_marca)
-    {
+    public function updateMarca($id_marca)    {
         if (!isset($_POST['nombre']) || empty($_POST['nombre'])) {
             header("Location: " . BASE_URL);
             return;
@@ -177,6 +184,46 @@ class Concesionaria_controller
         $this->model->updateMarca($id_marca, $nombre, $rutaImagenFinal);
 
         header("Location: " . BASE_URL);
+    }
+
+    public function updateVehiculo($id_vehiculo)    {
+        if (!isset($_POST['modelo']) || empty($_POST['modelo'])) {
+            header("Location: " . BASE_URL . 'updateFormVehiculo/' . $id_vehiculo);
+            return;
+        }
+        if (!isset($_POST['marca']) || empty($_POST['marca'])) {
+            header("Location: " . BASE_URL . 'updateFormVehiculo/' . $id_vehiculo);
+            return;
+        }
+        if (!isset($_POST['descripcion']) || empty($_POST['descripcion'])) {
+            header("Location: " . BASE_URL . 'updateFormVehiculo/' . $id_vehiculo);
+            return;
+        }
+        
+        $modelo = $_POST['modelo'];
+        $marca = $_POST['marca'];
+        $descripcion = $_POST['descripcion'];
+        $rutaImagenFinal = 'img/vehiculos/default.png';   
+
+        if (
+            isset($_FILES['imagen']) && $_FILES['imagen']['error'] === 0 &&
+            ($_FILES['imagen']['type'] == "image/jpg" ||
+                $_FILES['imagen']['type'] == "image/jpeg" ||
+                $_FILES['imagen']['type'] == "image/png")
+        ) {
+            $rutaImagenTemporal = $_FILES['imagen']['tmp_name'];
+            $extensionImagen = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+            $modeloImagen = uniqid() . "." . $extensionImagen;
+            $rutaImagenFinal = 'img/vehiculos/' . $modeloImagen;
+    
+            if (!move_uploaded_file($rutaImagenTemporal, $rutaImagenFinal)) {
+                $rutaImagenFinal = 'img/vehiculos/default.png';
+            }
+        }
+
+        $this->model->updateVehiculo($id_vehiculo, $modelo, $marca, $descripcion, $rutaImagenFinal);
+
+        header("Location: " . BASE_URL . 'showVehiculo/' . $id_vehiculo);
         
     }
 

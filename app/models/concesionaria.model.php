@@ -68,6 +68,9 @@ class Concesionaria_model {
     }
     
     public function deleteMarca($id_marca) {
+        $query = $this->db->prepare('DELETE FROM vehiculos WHERE marca = ?');
+        $query->execute([$id_marca]);
+
         $query = $this->db->prepare('DELETE FROM marcas WHERE id_marca = ?');
         $query->execute([$id_marca]);
     }
@@ -80,6 +83,10 @@ class Concesionaria_model {
     public function updateMarca($id_marca, $nombre, $imagen) {
         $query = $this->db->prepare('UPDATE marcas SET nombre = ?, imagen = ? WHERE id_marca = ?');
         $query->execute([$nombre, $imagen, $id_marca]);
+    }
+    public function updateVehiculo( $id_vehiculo, $modelo, $marca, $descripcion, $imagen) {
+        $query = $this->db->prepare('UPDATE vehiculos SET modelo = ?, marca = ?, descripcion = ?, imagen = ? WHERE id_vehiculo = ?');
+        $query->execute([$modelo, $marca, $descripcion, $imagen, $id_vehiculo]);
     }
 
 }

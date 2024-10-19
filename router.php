@@ -51,11 +51,17 @@ switch ($params[0]) {
         $controller = new Concesionaria_controller($res);
         $controller->deleteMarca($params[1]);
         break;
+    case 'confirmacionDeleteMarca':
+        readSession($res);
+        verifySession($res);
+        $controller = new Concesionaria_controller($res);
+        $controller->confirmacionDeleteMarca($params[1]);
+        break;
     case 'updateFormMarca':
         readSession($res);
         verifySession($res);
         $controller = new Concesionaria_controller($res);
-        $controller->showUpdateForm($params[1]);
+        $controller->showUpdateFormMarca($params[1]);
         break;
     case 'updateMarca':
         $controller = new Concesionaria_controller($res);
@@ -73,12 +79,18 @@ switch ($params[0]) {
         $controller = new Concesionaria_controller($res);
         $controller->deleteVehiculo($params[1]);
         break;
-    // case 'updateVehiculo':
-    //     readSession($res);
-    //     verifySession($res);
-    //     $controller = new Concesionaria_controller();
-    //     $controller->updateVehiculo($params[1]);
-    //     break;
+    case 'updateFormVehiculo':
+        readSession($res);
+        verifySession($res);
+        $controller = new Concesionaria_controller($res);
+        $controller->showUpdateFormVehiculo($params[1]);
+        break;
+    case 'updateVehiculo':
+        readSession($res);
+        verifySession($res);
+        $controller = new Concesionaria_controller($res);
+        $controller->updateVehiculo($params[1]);
+        break;
     case 'showLogin':
         $controller = new Auth_controller($res);
         $controller->showLogin();

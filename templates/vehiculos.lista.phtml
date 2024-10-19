@@ -1,6 +1,8 @@
 <?php require_once 'layout/header.phtml'; ?>
 
-<?php require_once 'vehiculos.form.phtml'; ?>
+<?php if ($this->user) 
+    require_once 'vehiculos.form.phtml'; ?>
+
 <section class="container mx-auto">
     <h1>Listado de Vehículos Disponibles</h1>
     <div class=" d-flex flex-row flex-wrap justify-content-center ">
@@ -20,9 +22,11 @@
                 </a>
 
                 <div class="d-flex justify-content-between align-items-end">
+                <?php if ($this->user) : ?>
                     <a href="deleteVehiculo/<?= $vehiculo->id_vehiculo ?>" class="btn btn-danger">Borrar</a>
                     <a href="updateFormVehiculo/<?= $vehiculo->id_vehiculo ?>"
                         class="btn btn-success">Editar</a>
+                <?php endif; ?>
                     <a href="showVehiculo/<?= $vehiculo->id_vehiculo ?>" class="btn btn-primary">Ver</a>
                 </div>
             </div>
@@ -30,7 +34,6 @@
     <?php endforeach ?>
     </div>
 
-    <?php require_once 'layout/footer.phtml'; ?>
 </section>
 
 <?php require_once 'layout/footer.phtml'; ?>

@@ -1,8 +1,10 @@
-
+<?php
+  require_once 'layout/header.phtml';
+?>
 
 <div class="container mx-auto">
-    <h1>Agregar Vehiculo</h1>
-    <form action="addVehiculo" method="POST" enctype="multipart/form-data" class="my-4 ">
+    <h1>Modificar Vehiculo</h1>
+    <form action="updateVehiculo/<?=$vehiculo->id_vehiculo?>" method="POST" enctype="multipart/form-data" class="my-4 ">
         <div class="row m-4">
             <div class="col-12 col-md-6">
                 <div class="form-group">
@@ -17,7 +19,7 @@
             <div class="col-12 col-md-6">
                 <div class="form-group">
                     <label>Modelo</label>
-                    <input name="modelo" type="text" class="form-control">
+                    <input name="modelo" type="text" class="form-control" value="<?= $vehiculo->modelo ?>">
                 </div>
             </div>
         </div>
@@ -26,7 +28,8 @@
             <div class="col-12 col-md-6">
                 <div class="form-group">
                     <label>Descripción</label>
-                    <textarea name="descripcion" class="form-control"></textarea>
+                    <textarea name="descripcion" class="form-control" 
+                    ><?= $vehiculo->descripcion ?></textarea>
                 </div>
             </div>
             <div class="col-12 col-md-6">
@@ -46,3 +49,7 @@
 
     </form>
 </div>
+
+<?php
+  require_once 'layout/footer.phtml';
+?>
