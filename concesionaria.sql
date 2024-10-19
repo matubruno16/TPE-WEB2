@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-10-2024 a las 16:22:01
+-- Tiempo de generación: 19-10-2024 a las 17:21:01
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -85,11 +85,11 @@ CREATE TABLE `vehiculos` (
 --
 
 INSERT INTO `vehiculos` (`id_vehiculo`, `modelo`, `marca`, `descripcion`, `imagen`) VALUES
-(26, 'Ranger', 10, 'Es una camioneta 4x4', 'img/vehiculos/6712a4968a9b4.jpg'),
-(27, 'Saveiro', 9, 'Es una camioneta chiquita pero muy fachera', 'img/vehiculos/6712a4af3b747.jpg'),
+(26, 'Ranger', 10, 'Es una camioneta 4x4. color blanco', 'img/vehiculos/6713ca8858a78.jpg'),
+(27, 'Saveiro', 9, 'Es una camioneta chiquita pero muy fachera. De color roja', 'img/vehiculos/6713c7e2d44ee.jpg'),
 (28, 'Cronos', 11, 'Es el auto mas vendido en 2023', 'img/vehiculos/6712a4bf610ee.jpg'),
-(29, 'Ka', 10, 'Es un auto chico para cuidad', 'img/vehiculos/6712a4d493032.jpg'),
-(30, 'Clase A', 8, 'Es una locura de auto', 'img/vehiculos/6712a51dca76f.jpg');
+(30, 'Clase A', 8, 'Es una locura de auto', 'img/vehiculos/6712a51dca76f.jpg'),
+(31, 'Ka', 10, 'Auto chiquititititittitop', 'img/vehiculos/6713ce4daaf62.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -135,17 +135,11 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `vehiculos`
 --
 ALTER TABLE `vehiculos`
-  MODIFY `id_vehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_vehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `marcas`
---
-ALTER TABLE `marcas`
-  ADD CONSTRAINT `marcas_ibfk_1` FOREIGN KEY (`id_marca`) REFERENCES `vehiculos` (`marca`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `vehiculos`
