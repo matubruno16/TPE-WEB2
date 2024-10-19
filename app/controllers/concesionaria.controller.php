@@ -19,22 +19,26 @@ class Concesionaria_controller
         $this->view->showMarcas($marcas);
     }
 
-    public function showVehiculos($id_marca = '')
-    {
+    public function showVehiculos($id_marca = ''){
         $marcas = $this->model->getMarcas();
-
+        
         if ($id_marca) {
-            $marca = $this->model->getMarca($id_marca);
             $vehiculos = $this->model->getVehiculosPorMarca($id_marca);
-
-            $this->view->showVehiculos($vehiculos, $marca, $marcas= null);
-            return;
+        } else {
+            $vehiculos = $this->model->getVehiculos();
         }
 
-        $vehiculos = $this->model->getVehiculos();
-
-        $this->view->showVehiculos($vehiculos, $marca = null, $marcas);
+        foreach ($vehiculos as &$vehiculo) {
+            foreach ($marcas as $marca) {
+                if ($marca->id_marca == $vehiculo->marca) {
+                    $vehiculo->nombreMarca = $marca->nombre; 
+                    break;
+                }
+            }
+        }
+        $this->view->showVehiculos($vehiculos);
     }
+
 
     public function showVehiculo($id_vehiculo) {
         $vehiculo = $this->model->getVehiculo($id_vehiculo);
