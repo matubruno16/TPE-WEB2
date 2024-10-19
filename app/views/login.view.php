@@ -1,6 +1,11 @@
 <?php
 
 class Login_view {
+    private $user = null;
+
+    public function __construct($user = null) {
+        $this->user = $user;
+    }
     public function showLogin($error = '') {
         require_once 'templates/login.form.phtml';
     }

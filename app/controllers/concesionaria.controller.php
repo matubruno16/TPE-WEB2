@@ -7,10 +7,9 @@ class Concesionaria_controller
     private $model;
     private $view;
 
-    public function __construct()
-    {
+    public function __construct($res) {
         $this->model = new Concesionaria_model();
-        $this->view = new Concesionaria_view();
+        $this->view = new Concesionaria_view($res->user);
     }
 
     public function showMarcas()

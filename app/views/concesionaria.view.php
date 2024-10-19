@@ -3,7 +3,7 @@
 class Concesionaria_view {
     private $user = null;
 
-    public function __construct($user = '') {
+    public function __construct($user = null) {
         $this->user = $user;
     }
 

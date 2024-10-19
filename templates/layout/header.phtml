@@ -17,7 +17,14 @@
       <div class="navbar-nav mx-auto">
         <a class="nav-link active" aria-current="page" href="home">Home</a>
         <a class="nav-link" href="showVehiculos">Vehiculos</a>
-        <a class="nav-link" href="logout">Cerrar sesion</a>
+        
+        <a class="nav-link" href="logout">
+          <?php if ($this->user) : ?>
+            Cerrar sesion
+          <?php else : ?>
+            Iniciar sesion
+          <?php endif; ?>
+        </a>
       </div>
     </div>
   </div>

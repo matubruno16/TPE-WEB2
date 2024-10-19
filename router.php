@@ -21,56 +21,56 @@ $params = explode('/', $action);
 switch ($params[0]) {
     case 'home':
         readSession($res);
-        $controller = new Concesionaria_controller();
+        $controller = new Concesionaria_controller($res);
         $controller->showMarcas();
         break;
     case 'showVehiculos':
         readSession($res);
-        $controller = new Concesionaria_controller();
+        $controller = new Concesionaria_controller($res);
         $controller->showVehiculos();
         break;
     case 'showVehiculosPorMarca':
         readSession($res);
-        $controller = new Concesionaria_controller();
+        $controller = new Concesionaria_controller($res);
         $controller->showVehiculos($params[1]);
         break;
     case 'showVehiculo':
         readSession($res);
-        $controller = new Concesionaria_controller();
+        $controller = new Concesionaria_controller($res);
         $controller->showVehiculo($params[1]);
         break;
     case 'addMarca':
         readSession($res);
         verifySession($res);
-        $controller = new Concesionaria_controller();
+        $controller = new Concesionaria_controller($res);
         $controller->addMarca();
         break;
     case 'deleteMarca':
         readSession($res);
         verifySession($res);
-        $controller = new Concesionaria_controller();
+        $controller = new Concesionaria_controller($res);
         $controller->deleteMarca($params[1]);
         break;
     case 'updateFormMarca':
         readSession($res);
         verifySession($res);
-        $controller = new Concesionaria_controller();
+        $controller = new Concesionaria_controller($res);
         $controller->showUpdateForm($params[1]);
         break;
     case 'updateMarca':
-        $controller = new Concesionaria_controller();
+        $controller = new Concesionaria_controller($res);
         $controller->updateMarca($params[1]);
         break;
     case 'addVehiculo':
         readSession($res);
         verifySession($res);
-        $controller = new Concesionaria_controller();
+        $controller = new Concesionaria_controller($res);
         $controller->addVehiculo();
         break;
     case 'deleteVehiculo':
         readSession($res);
         verifySession($res);
-        $controller = new Concesionaria_controller();
+        $controller = new Concesionaria_controller($res);
         $controller->deleteVehiculo($params[1]);
         break;
     // case 'updateVehiculo':
@@ -80,23 +80,23 @@ switch ($params[0]) {
     //     $controller->updateVehiculo($params[1]);
     //     break;
     case 'showLogin':
-        $controller = new Auth_controller();
+        $controller = new Auth_controller($res);
         $controller->showLogin();
         break;
     case 'login':
-        $controller = new Auth_controller();
+        $controller = new Auth_controller($res);
         $controller->login();
         break;
     case 'logout':
-        $controller = new Auth_controller();
+        $controller = new Auth_controller($res);
         $controller->logout();
         break;
     case 'showSingUp':
-        $controller = new Auth_controller();
+        $controller = new Auth_controller($res);
         $controller->showSingUp();
         break;
     case 'singUp':
-        $controller = new Auth_controller();
+        $controller = new Auth_controller($res);
         $controller->singUp();
         break;
     default:
