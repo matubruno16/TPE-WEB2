@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-10-2024 a las 21:06:45
+-- Tiempo de generación: 19-10-2024 a las 16:22:01
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -140,6 +140,12 @@ ALTER TABLE `vehiculos`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `marcas`
+--
+ALTER TABLE `marcas`
+  ADD CONSTRAINT `marcas_ibfk_1` FOREIGN KEY (`id_marca`) REFERENCES `vehiculos` (`marca`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `vehiculos`
