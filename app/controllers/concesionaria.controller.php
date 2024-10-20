@@ -147,7 +147,8 @@ class Concesionaria_controller
 
     public function showUpdateFormMarca($id_marca)
     {
-        $this->view->showUpdateFormMarca($id_marca);
+        $marca = $this->model->getMarca($id_marca);
+        $this->view->showUpdateFormMarca($id_marca, $marca);
     }
     public function showUpdateFormVehiculo($id_vehiculo)
     {

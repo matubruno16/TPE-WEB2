@@ -11,7 +11,7 @@ class Concesionaria_view {
         require_once 'templates/marcas.lista.phtml';
     }
 
-    public function showUpdateFormMarca($id_marca) {
+    public function showUpdateFormMarca($id_marca, $marca) {
         require_once 'templates/marcas.update.form.phtml';
     }
     public function showUpdateFormVehiculo($vehiculo, $marcas) {

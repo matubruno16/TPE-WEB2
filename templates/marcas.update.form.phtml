@@ -1,11 +1,12 @@
 <?php require_once 'layout/header.phtml';?>
-
-<form action="updateMarca/<?= $id_marca ?>" method="POST" enctype="multipart/form-data" class="my-4">
+<div class="md-container mx-auto pt-5 ">
+    <h1 class="text-center">Modificar Marca</h1>
+<form action="updateMarca/<?= $id_marca ?>" method="POST" enctype="multipart/form-data" class="my-4 col-12 col-md-8 col-lg-4 mx-auto">
         <div class="row m-4">
             <div class="col-12">
                 <div class="form-group">
-                    <label>Agregar marca</label>
-                    <input name="nombre" type="text" class="form-control">
+                    <label>Nombre de marca</label>
+                    <input name="nombre" type="text" class="form-control" value="<?= $marca->nombre ?>">
                 </div>
             </div>
         </div>
@@ -18,11 +19,11 @@
             </div>
         </div>
 
-        <div class="row m-4">
+        <div class="row m-4 d-flex justify-content-center">
             <div class="col-4">
-                <button type="submit" class="btn btn-primary mt-4">Guardar</button>
+                <button type="submit" class="btn btn-primary px-4 mt-4">Guardar</button>
             </div>
         </div>
     </form>
-
+</div>
 <?php require_once 'layout/footer.phtml';?>
