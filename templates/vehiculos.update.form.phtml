@@ -5,8 +5,8 @@
 <div class="container mx-auto">
     <h1>Modificar Vehiculo</h1>
     <form action="updateVehiculo/<?=$vehiculo->id_vehiculo?>" method="POST" enctype="multipart/form-data" class="my-4 ">
-        <div class="row m-4">
-            <div class="col-12 col-md-6">
+        <div class="row m-md-4">
+            <div class="col-12 col-md-6 my-2 my-md-0 ">
                 <div class="form-group">
                     <label>Marca</label>
                     <select name="marca" class="form-control">
@@ -16,7 +16,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 my-2 my-md-0">
                 <div class="form-group">
                     <label>Modelo</label>
                     <input name="modelo" type="text" class="form-control" value="<?= $vehiculo->modelo ?>">
@@ -24,15 +24,15 @@
             </div>
         </div>
 
-        <div class="row m-4">
-            <div class="col-12 col-md-6">
+        <div class="row m-md-4">
+            <div class="col-12 col-md-6 my-2 my-md-0">
                 <div class="form-group">
                     <label>Descripción</label>
                     <textarea name="descripcion" class="form-control" 
                     ><?= $vehiculo->descripcion ?></textarea>
                 </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 my-2 my-md-0">
                 <div class="form-group">
                     <label>Imagen (URL)</label>
                     <input name="imagen" type="file" class="form-control" id="imagen" accept="image/*">
@@ -40,8 +40,8 @@
             </div>
         </div>
 
-        <div class="row m-4">
-            <div class="col-12 col-md-6">
+        <div class="row m-md-4">
+            <div class="col-12 col-md-6 my-2 my-md-0">
                 <button type="submit" class="btn btn-primary mt-4">Guardar</button>
             </div>
         </div>
